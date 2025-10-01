@@ -10,10 +10,10 @@ Route::get('/profile', function () {
     return view('profile');
 });
 
-Route::get('/berita', function () {
-    return view('berita');
+Route::get('/news', function () {
+    return view('news');
 });
 
-Route::get('/kontak', function () {
-    return view('kontak');
+Route::get('/contact', function () {
+    return view('contact');
 });

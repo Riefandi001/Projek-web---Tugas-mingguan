@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="c">
   <title>Website Stylish</title>
   <style>
     /* Reset */
@@ -149,7 +148,7 @@
 
   <!-- Hero -->
   <section class="hero">
-    <h2>Selamat Datang!</h2>
+    <h2>Selamat Datang di Halaman Contact!</h2>
     <p>Website modern, stylish, dan responsif dengan navigasi keren di atas. Yuk jelajahi halaman ini.</p>
     <a href="#" class="btn">Mulai Sekarang</a>
   </section>

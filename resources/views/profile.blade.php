@@ -149,7 +149,7 @@
 
   <!-- Hero -->
   <section class="hero">
-    <h2>Selamat Datang!</h2>
+    <h2>Selamat Datang di Halaman Profile!</h2>
     <p>Website modern, stylish, dan responsif dengan navigasi keren di atas. Yuk jelajahi halaman ini.</p>
     <a href="#" class="btn">Mulai Sekarang</a>
   </section>
