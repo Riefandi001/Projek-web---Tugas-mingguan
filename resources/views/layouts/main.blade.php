@@ -143,6 +143,7 @@
         <li><a href="/news">News</a></li>
         <li><a href="/contact">Contact</a></li>
         <li><a href="/profile">Profile</a></li>
+        <li><a href="/mahasiswa">Mahasiswa</a></li>
       </ul>
     </nav>
   </header>

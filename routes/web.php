@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\NewsController;
 use App\Models\News;
 use Illuminate\Support\Facades\Route;
 
@@ -18,20 +20,11 @@ Route::get('/profile', function () {
     ]);
 });
 
-Route::get('/news', function () {
+Route::get('/news', [NewsController::class,'index']);
 
-    return view('news', [
-        "title" => "news",
-        "newss" => News::ambildata(),
-    ]);
-});
+Route::get('/news/{slug}', [NewsController::class, 'tampildata']);
 
-Route::get('/news/{slug}', function ($slugp) {
-    return view('singlenews', [
-        "title" => "News",
-        "new_news" => News::caridata($slugp),
-    ]);
-});
+Route::get('/mahasiswa', [MahasiswaController::class,'index']);
 
 Route::get('/contact', function () {
     return view('contact', [

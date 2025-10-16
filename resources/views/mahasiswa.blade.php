@@ -1,5 +1,5 @@
 @extends('layouts/main')
 
 @section('content')
-  <h1>contact</h1>
+  <h1>Data Mahasiswa</h1>
 @endsection
