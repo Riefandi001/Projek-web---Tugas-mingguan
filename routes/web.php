@@ -26,9 +26,18 @@ Route::get('/news/{slug}', [NewsController::class, 'tampildata']);
 
 Route::get('/mahasiswa', [MahasiswaController::class,'index']);
 
+Route::get('/mahasiswa', [MahasiswaController::class, 'index'] )->name('mahasiswa');
+
+Route::get('/tambahmahasiswa', [MahasiswaController::class, 'tambahmahasiswa'] )->name('tambahmahasiswa');
+
+Route::post('/insertdata', [MahasiswaController::class, 'insertdata'] )->name('insertdata');
+
+
 Route::get('/contact', function () {
     return view('contact', [
         "title" => "contact",
     ]);
 });
+
+
 
