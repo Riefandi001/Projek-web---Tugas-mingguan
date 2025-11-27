@@ -1,5 +1,5 @@
 <?php
-
+//O2RhLeEqW08MXt
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -51,5 +51,14 @@ class MahasiswaController extends Controller
         $data->update($request -> all());
 
         return redirect()->route('mahasiswa')->with('success', 'Data Berhasil Diedit!');
+    }
+
+    public function deletedata($id)
+    {
+        $data = Mahasiswa::find($id);
+
+        $data->delete();
+
+        return redirect()->route('mahasiswa')->with('success', 'Data Berhasil Dihapus!');
     }
 }

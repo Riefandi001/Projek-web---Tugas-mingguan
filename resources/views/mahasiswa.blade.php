@@ -36,7 +36,8 @@
       <td>{{ $mahasiswa["nohp"] }}</td>
       <td>
         <a href="/tampildata/{{ $mahasiswa['id']}}" class="btn btn-primary">Edit</a>
-        <button type="button" class="btn btn-danger">Hapus</button>
+        <a href="/deletedata/{{ $mahasiswa['id']}}" class="btn btn-primary"
+        onclick="return confirm('yakin Hapus?')">Hapus</a>
       </td>
       <?php $i++ ?>
     </tr>
@@ -44,11 +45,4 @@
     
   </tbody>
 </table>
-
-
-
-  </div>
-  
-
-
 @endsection
