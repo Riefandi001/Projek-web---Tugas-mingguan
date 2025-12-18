@@ -7,9 +7,17 @@
   <button type="button" class="btn btn-success mb-2">Tambah Data</button><br>
   </a>
   @if ($message = Session::get('success'))
-    <div class="alert alert-success" role="alert">
-      {{ $message }}
-    </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+        Swal.fire({
+          title: "Berhasil!!",
+          text: "{{ $massage }}",
+          icon: "success"
+      });
+    })
+
+  </script>
   @endif
   <table class="table">
   <thead>
@@ -36,13 +44,46 @@
       <td>{{ $mahasiswa["nohp"] }}</td>
       <td>
         <a href="/tampildata/{{ $mahasiswa['id']}}" class="btn btn-primary">Edit</a>
-        <a href="/deletedata/{{ $mahasiswa['id']}}" class="btn btn-primary"
-        onclick="return confirm('yakin Hapus?')">Hapus</a>
+        <a href="/deletedata/{{ $mahasiswa['id']}}" class="btn btn-primary" 
+          data id="{{ $mahasiswa['id']}}" data nama="{{ $mahasiswa['name']}}">Hapus</a>
       </td>
       <?php $i++ ?>
     </tr>
     @endforeach
-    
   </tbody>
 </table>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  <script src="https://code.jquery.com/jquery-3.7.1.js" 
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" 
+  crossorigin="anonymous">
+  </script>
+
+  <script>
+
+    $('.delete').click( function(){
+      
+      let id = $(this).attr('data-id');
+      let nama = $(this).attr('data-nama');
+
+      Swal.fire({
+        title: "Are you sure?",
+        text: "Data " + nama + " akan terhapus.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location = "/deletedata/" + id;
+          }
+        });
+      });
+  
+
+
+  </script>  
 @endsection
