@@ -1,32 +1,81 @@
-@extends ('layouts/main')
+@extends('layouts/main')
+
 @section('content')
-    <h1>edit data mahasiswa</h1>
-    <div class="card">
-        <div class="card-body bg-ocean">
-    <form action="/editdata/{{ $data ['id'] }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <div class="mb-3">
-            <label for="nama" class="form-label">Nama:</label>
-            <input type="text" name="name" id="nama" value="{{ $data['name'] }}" placeholder="Nama Lengkap" class="form-control"  >
+<div class="container mt-5">
+
+  <div class="row justify-content-center">
+    <div class="col-md-7">
+
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+
+          <h4 class="fw-bold text-center mb-4">
+            ✏️ Edit Data Mahasiswa
+          </h4>
+
+          <form action="/editdata/{{ $data['id'] }}" method="POST">
+            @csrf
+
+            <div class="mb-3">
+              <label class="form-label">Nama Lengkap</label>
+              <input type="text"
+                     name="name"
+                     class="form-control"
+                     value="{{ $data['name'] }}"
+                     required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">NIM</label>
+              <input type="number"
+                     name="nim"
+                     class="form-control"
+                     value="{{ $data['nim'] }}"
+                     required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Program Studi</label>
+              <input type="text"
+                     name="prodi"
+                     class="form-control"
+                     value="{{ $data['prodi'] }}"
+                     required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email"
+                     name="email"
+                     class="form-control"
+                     value="{{ $data['email'] }}"
+                     required>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label">No. HP</label>
+              <input type="number"
+                     name="nohp"
+                     class="form-control"
+                     value="{{ $data['nohp'] }}"
+                     required>
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <a href="/mahasiswa" class="btn btn-secondary">
+                ← Kembali
+              </a>
+              <button type="submit" class="btn btn-warning px-4">
+                Simpan Perubahan
+              </button>
+            </div>
+
+          </form>
+
         </div>
-        <div class="mb-3">
-            <label for="nim" class="form-label">Nomor Induk Mahasiswa(Nim)</label>
-            <input type="number" name="nim" id="nim" placeholder="NIM lengkap" class="form-control"  value="{{ $data['nim'] }}" >
-        </div>
-        <div class="mb-3">
-            <label for="prodi" class="form-label">Progam Studi</label>
-            <input type="text" name="prodi" id="prodi" placeholder="Nama Progam Studi" class="form-control" value="{{ $data['podi'] }}">
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" name="email" id="email" placeholder="Nama Email" class="form-control"  value="{{ $data['email'] }}">
-        </div>
-        <div class="mb-3">
-            <label for="nohp" class="form-label">No Hp</label>
-            <input type="number" name="nohp" id="nohp" placeholder="nomer Handphone" class="form-control"  value="{{ $data['nohp'] }}">
-        </div>
-        <button type="submit" class="btn btn-primary">Edit data</button>
-    </form>
+      </div>
+
     </div>
-    </div>
+  </div>
+</div>
 @endsection

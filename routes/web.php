@@ -25,8 +25,6 @@ Route::get('/news', [NewsController::class,'index']);
 
 Route::get('/news/{slug}', [NewsController::class, 'tampildata']);
 
-Route::get('/mahasiswa', [MahasiswaController::class,'index']);
-
 Route::get('/mahasiswa', [MahasiswaController::class, 'index'] )->name('mahasiswa');
 
 Route::get('/tambahmahasiswa', [MahasiswaController::class, 'tambahmahasiswa'] )->name('tambahmahasiswa');
@@ -52,15 +50,10 @@ Route::post('/login', [AuthController::class, 'authenticate']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
 // route yang BUTUH LOGIN
-Route::middleware('auth.login')->group(function () {
-    Route::get('/profile', function () {
-        return view('profile', ['title' => 'Profile']);
-    });
+Route::get('/mahasiswa', [MahasiswaController::class, 'index'])
+    ->middleware('auth.login')
+    ->name('mahasiswa');
 
-    Route::get('/mahasiswa', function () {
-        return view('mahasiswa', ['title' => 'Mahasiswa']);
-    });
-});
 
 
 
