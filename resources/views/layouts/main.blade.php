@@ -153,7 +153,6 @@
         <li><a href="/" class="{{ $title === 'Home' ? 'active' : '' }}">Home</a></li>
         <li><a href="/news" class="{{ $title === 'News' ? 'active' : '' }}">News</a></li>
         <li><a href="/contact" class="{{ $title === 'Contact' ? 'active' : '' }}">Contact</a></li>
-        <li><a href="/mahasiswa" class="{{ $title === 'Mahasiswa' ? 'active' : '' }}">Mahasiswa</a></li>
 
         @if(session()->has('user'))
           <li class="dropdown">
@@ -162,6 +161,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item" href="/profile">Profile</a></li>
+              <li><a class="dropdown-item" href="/mahasiswa">Mahasiswa</a></li>
               <li>
                 <form action="/logout" method="POST">
                   @csrf
