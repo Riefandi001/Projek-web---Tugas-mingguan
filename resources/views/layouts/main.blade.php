@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="c">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <title>{{ $title }}</title>
   <style>
     /* Reset */
@@ -44,16 +45,26 @@
       list-style: none;
       display: flex;
       gap: 1.5rem;
+      align-items: center;
     }
 
     nav a {
       text-decoration: none;
-      color: white;
+      color: #e5e7eb;
       font-weight: 500;
-      transition: 0.3s;
+      padding: 0.5rem 0.8rem;
+      border-radius: 6px;
+      transition: background 0.3s, color 0.3s;
     }
 
     nav a:hover {
+      background: #1f2933;
+      color: #3b82f6;
+    }
+
+    /* aktif page (opsional) */
+    nav a.active {
+      background: #1f2933;
       color: #3b82f6;
     }
 
@@ -135,22 +146,44 @@
 </head>
 <body>
   <!-- Header -->
-  <header>
-    <h1>MyWebsite</h1>
+<header>
+  <h1>MyWebsite</h1>
     <nav>
       <ul>
-        <li><a class="nav-link {{ $title === 'Home' ? 'active' : ''}}" href="/">Home</a></li>
-        <li><a href="/news">News</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li><a href="/profile">Profile</a></li>
-        <li><a href="/mahasiswa">Mahasiswa</a></li>
+        <li><a href="/" class="{{ $title === 'Home' ? 'active' : '' }}">Home</a></li>
+        <li><a href="/news" class="{{ $title === 'News' ? 'active' : '' }}">News</a></li>
+        <li><a href="/contact" class="{{ $title === 'Contact' ? 'active' : '' }}">Contact</a></li>
+        <li><a href="/mahasiswa" class="{{ $title === 'Mahasiswa' ? 'active' : '' }}">Mahasiswa</a></li>
+
+        @if(session()->has('user'))
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown">
+              {{ session('user.name') }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="/profile">Profile</a></li>
+              <li>
+                <form action="/logout" method="POST">
+                  @csrf
+                  <button class="dropdown-item text-danger">Logout</button>
+                </form>
+              </li>
+            </ul>
+          </li>
+        @else
+          <li>
+            <a href="/login" class="{{ $title === 'Login' ? 'active' : '' }}">Login</a>
+          </li>
+        @endif
       </ul>
     </nav>
   </header>
+
     @yield('content')
   <!-- Footer -->
   <footer>
     <p>&copy; 2025 MyWebsite. All rights reserved.</p>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

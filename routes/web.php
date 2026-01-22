@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\AuthController;
 use App\Models\News;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,24 @@ Route::get('/contact', function () {
     return view('contact', [
         "title" => "contact",
     ]);
+});
+
+Route::get('/register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController::class, 'storeRegister']);
+
+Route::get('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'authenticate']);
+Route::post('/logout', [AuthController::class, 'logout']);
+
+// route yang BUTUH LOGIN
+Route::middleware('auth.login')->group(function () {
+    Route::get('/profile', function () {
+        return view('profile', ['title' => 'Profile']);
+    });
+
+    Route::get('/mahasiswa', function () {
+        return view('mahasiswa', ['title' => 'Mahasiswa']);
+    });
 });
 
 
